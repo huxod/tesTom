@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet-mapping>
+        <servlet-name>service.ServletIndex</servlet-name>
+        <url-pattern>/service</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>service.ServletRegister</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-class>service.ServletIndex</servlet-class>
+        <servlet-name>service.ServletIndex</servlet-name>
+    </servlet>
+    <servlet>
+        <servlet-class>register.ServletRegister</servlet-class>
+        <servlet-name>service.ServletRegister</servlet-name>
+    </servlet>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/webkit/register.jsp</welcome-file>
+        <welcome-file>service.ServletIndex</welcome-file>
+    </welcome-file-list>
+</web-app>

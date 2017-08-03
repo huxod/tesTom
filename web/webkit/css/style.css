@@ -1,0 +1,9 @@
+body{
+    background:#f9f9f9;
+}
+.fix-top{
+    height: 70px;
+}
+.form-wrapper{
+    padding: 20px;
+}
