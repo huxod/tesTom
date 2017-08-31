@@ -1,10 +1,14 @@
 /**
  * created by huber on 21.06.2017.
  */
-var a,k = 0, select, out,outs,empty_message ,outop, op = [],tab_words = [[],[]];
+var a,k = 0, select, out,outs,empty_message ,outop,results, op = [],tab_words = [[],[]];
 var input = document.getElementById('search-words');
 var inputs = document.getElementById('words_en');
-//ajax get file.txt
+
+//*************************************************************//
+// Ajax get file.txt                                           //
+//*************************************************************//
+
 function readtextfile(file) {
     var rawfile = new XMLHttpRequest();
     rawfile.open("get", file);
@@ -52,7 +56,11 @@ if(input !== null){
             },425);
         }
     }
-//wait for file loading
+
+    //*************************************************************//
+    //Wait for file loading                                        //
+    //*************************************************************//
+
     function transform() {
         var refresh = setTimeout(function () {
             if (a == null) {
@@ -64,7 +72,7 @@ if(input !== null){
                     tab_words[0][i] = out[i].replace(" ","");
                     tab_words[1][i] = outs[i].replace(" ","");
                     op[i] = out[i].replace(" ","");
-                    console.log(tab_words[0][i]+" "+tab_words[1][i]);
+                    /*  console.log(tab_words[0][i]+" "+tab_words[1][i]);*/
                 }
                 a = null;
                 out = null;
@@ -285,27 +293,67 @@ if(input !== null){
             if (k === 14) k = 0;
         }
     };
+
+
+    var cls_nomber = 0, cls_controll;
     var checkwords = document.getElementById('check_words');
-    var results = document.getElementById('results');
-    console.log("Onclick butto propably is enabled");
-    checkwords.onclick = function (event) {
+    var wrap_results = document.getElementsByClassName('wrapper_results')[0];
+    //Function grab elements and clone
+    function cloneeElement(cloneable) {
+        if(cls_nomber === cls_controll) {
+            var clone = cloneable.cloneNode(true);
+            wrap_results.appendChild(clone);
+            clone.querySelector('.results').innerHTML = "";
+            clone.querySelector('.pl_words').innerHTML = "";
+            clone.querySelector('.en_words').innerHTML = "";
+            cls_nomber += 1;
+        }
+    }
+
+    //*************************************************************//
+    //Function add elements and check                              //
+    //*************************************************************//
+
+    function addRow(results, pl_words, en_words, cloneable ,i){
+        if (input.value === tab_words[0][i] && inputs.value === tab_words[1][i] ){
+            pl_words.innerHTML = tab_words[0][i];
+            en_words.innerHTML = tab_words[1][i];
+            results.innerHTML = "true";
+            cloneeElement(cloneable);
+            cloneable.className ="row cloneable correct";
+            return true;
+        }else if (input.value === tab_words[0][i] && en_words.innerHTML === "" && inputs.value !== tab_words[1][i] ){
+            pl_words.innerHTML = tab_words[0][i];
+            en_words.innerHTML = inputs.value;
+            results.innerHTML = "false";
+            cloneeElement(cloneable);
+            cloneable.className = "row cloneable incorrect";
+            return true;
+        }
+    }
+
+
+    checkwords.onclick = function () {
+        cls_controll = cls_nomber;
+        var cloneable = document.getElementsByClassName('cloneable')[cls_nomber];
+        results  = cloneable.querySelector('.results');
+        var pl_words = cloneable.querySelector('.pl_words');
+        var en_words = cloneable.querySelector('.en_words');
         if(input.value === ""){
             results.innerHTML = "Select first word";
         }else{
             for(i = 0;tab_words[0].length - 1 >= i; i++){
-                if (input.value === tab_words[0][i]   && inputs.value === tab_words[1][i])   results.innerHTML = "First Word is "+tab_words[1][i];
-                if (input.value === tab_words[0][i-1] && inputs.value === tab_words[1][i-1]) results.innerHTML = "First Word is "+tab_words[1][i-1];
-                if (input.value === tab_words[0][i-2] && inputs.value === tab_words[1][i-2]) results.innerHTML = "First Word is "+tab_words[1][i-2];
-                if (input.value === tab_words[0][i-3] && inputs.value === tab_words[1][i-3]) results.innerHTML = "First Word is "+tab_words[1][i-3];
-                if (input.value === tab_words[0][i-4] && inputs.value === tab_words[1][i-4]) results.innerHTML = "First Word is "+tab_words[1][i-4];
-                if (input.value === tab_words[0][i-4] && inputs.value === tab_words[1][i-5]) results.innerHTML = "First Word is "+tab_words[1][i-5];
-
+                addRow(results, pl_words, en_words, cloneable, i );
             }
         }
     }
 }
 
-//register
+
+    //*************************************************************//
+    //Register                                                     //
+    //*************************************************************//
+
 var add_name = document.getElementById("add_name");
 var add_password = document.getElementById("add_password");
 var add_email = document.getElementById("add_email");
@@ -323,3 +371,54 @@ if((add_name !== null) && (add_password !== null) && (add_email !== null)  && (a
         }
     }
 }
+
+var button_request = document.getElementById('chc');
+
+    //*************************************************************//
+    //Ajax request                                                 //
+    //*************************************************************//
+
+var name_user = document.getElementById("username").innerHTML;
+button_request.onclick =function () {
+    var resbool = results.innerHTML,
+        text_en = inputs.value,
+        text_pl = input.value;
+    console.log("name "+name_user+" pl : "+text_pl+" en : "+text_en+" results : "+resbool);
+    var xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            console.log("Status :"+xmlhttp.status);
+        }
+    };
+
+    xmlhttp.open("POST", 'http://localhost:8080/addwords', true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
+    xmlhttp.send("textpl="+ text_pl +"&texten=" + text_en +"&nameusr="+ name_user
+    + "&result="+ resbool);
+};
+
+//*************************************************************//
+// Find the closest ancestor element that has a specific class //                                           
+//*************************************************************//
+
+
+var element_parrent = document.getElementsByClassName('chc');
+console.log("findElement : "+element_parrent[0].parentNode.classList);
+function find_papa(ele, cls,i) {
+    while(!ele.classList.contains(cls)){
+        ele = ele.parentNode ;
+        if((element_parrent[i].innerHTML == "true") && (ele.classList.contains("learned"))){
+            ele.classList = ele.classList + " correct";
+        }
+        if(element_parrent[i].innerHTML == "false" && (ele.classList.contains("learned"))){
+            ele.classList = ele.classList + " incorrect";
+        }
+    }
+}
+for( i = 0;element_parrent.length > i;i++){
+    find_papa(element_parrent[i],"learned",i);
+}
+/////////////////////////////////////////////////////////////

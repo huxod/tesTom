@@ -14,8 +14,11 @@ public class QueriesSQL {
     public Statement stmt = null;
 
     public void queries(String sql) throws SQLException{
-        this.stmt.executeUpdate(sql);
-        this.stmt.close();
+        System.out.println("smt Update"+sql);
+       /*stmt.executeUpdate(sql);*/
+       stmt.executeUpdate(sql);
+       stmt.close();
+        System.out.println("smt Close");
     }
 
     public void close() throws SQLException{

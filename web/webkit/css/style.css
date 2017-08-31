@@ -7,3 +7,16 @@ body{
 .form-wrapper{
     padding: 20px;
 }
+.wrapper_results .col-md-4{
+    background: #b9def0;
+    border: 1px solid #2b669a;
+}
+.wrapper_results{
+    margin-bottom: 50px;
+}
+.correct .col-md-4{
+    background: #67b168;
+}
+.incorrect .col-md-4{
+    background: #d9534f;
+}

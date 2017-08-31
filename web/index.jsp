@@ -1,4 +1,3 @@
-<%@ page import="static javafx.scene.input.KeyCode.S" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +21,11 @@
         <div class="col-lg-8 table-bordered form-wrapper">
             <form class="form-inline" action="/service" method="post">
                 <div class="form-group row">
-                    <label  class="sr-only col-sm-4" for="name">Login</label>
+                    <label  class="col-sm-4" for="name">Login</label>
                     <input  class="col-sm-8 form-control mb-2 mr-sm-2 mb-sm-0" type="text" name="name" id="name">
                 </div>
                 <div class="form-group row">
-                    <label  class="col-sm-4 sr-only" for="password">Password</label>
+                    <label  class="col-sm-4" for="password">Password</label>
                     <input  class="col-sm-8 form-control mb-2 mr-sm-2 mb-sm-0" id="password" type="password" name="password">
                 </div>
                 <div class="form-group row">

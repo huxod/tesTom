@@ -25,7 +25,7 @@ public class ServletRegister extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(logon.checkEmail(request.getParameter("add_email"))){
+        if(logon.checkEmail(request.getParameter("add_email")) && request.getParameter("add_email") == "" && request.getParameter("add_name") == "" && request.getParameter("add_password") == ""){
             PrintWriter out = response.getWriter();
             out.println("<h1 style='text-align:center'>This email is use</h1>");
             request.getRequestDispatcher(register_page).include(request,response);
@@ -41,9 +41,5 @@ public class ServletRegister extends HttpServlet {
             request.getRequestDispatcher(login_page).include(request,response);
             out.close();
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
