@@ -1,7 +1,6 @@
-package register;
+package Access.register;
 
-import register.Register;
-import service.Logon;
+import Access.Logon;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,20 +11,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-/**
- * Created by huber on 27.07.2017.
- */
 @WebServlet(name = "ServletRegister")
 public class ServletRegister extends HttpServlet {
     public ServletRegister() throws SQLException {
     }
-    public final String register_page   = "/webkit/register.jsp";
-    public final String login_page      = "index.jsp";
-    public final Logon logon            = new Logon();
+    private final String register_page   = "/webkit/register.jsp";
+    private final String login_page      = "index.jsp";
+    private final Logon logon            = new Logon();
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(logon.checkEmail(request.getParameter("add_email")) && request.getParameter("add_email") == "" && request.getParameter("add_name") == "" && request.getParameter("add_password") == ""){
+        if(logon.checkEmail(request.getParameter("add_email")) && request.getParameter("add_email").equals("") && request.getParameter("add_name").equals("") && request.getParameter("add_password").equals("")){
             PrintWriter out = response.getWriter();
             out.println("<h1 style='text-align:center'>This email is use</h1>");
             request.getRequestDispatcher(register_page).include(request,response);

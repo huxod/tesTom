@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet-mapping>
+        <servlet-name>Access.ServletLogon</servlet-name>
+        <url-pattern>/logon</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>service.ServletIndex</servlet-name>
         <url-pattern>/service</url-pattern>
     </servlet-mapping>
@@ -15,21 +19,33 @@
         <servlet-name>learning.ServletAddWords</servlet-name>
         <url-pattern>/addwords</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Access.ServletLogout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <servlet>
-        <servlet-class>service.ServletIndex</servlet-class>
-        <servlet-name>service.ServletIndex</servlet-name>
-    </servlet>
-    <servlet>
-        <servlet-class>register.ServletRegister</servlet-class>
         <servlet-name>register.ServletRegister</servlet-name>
+        <servlet-class>Access.register.ServletRegister</servlet-class>
     </servlet>
     <servlet>
-        <servlet-class>learning.ServletAddWords</servlet-class>
+        <servlet-name>Access.ServletLogon</servlet-name>
+        <servlet-class>Access.ServletLogon</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>service.ServletIndex</servlet-name>
+        <servlet-class>service.ServletIndex</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>learning.ServletAddWords</servlet-name>
+        <servlet-class>learning.ServletAddWords</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Access.ServletLogout</servlet-name>
+        <servlet-class>Access.ServletLogout</servlet-class>
     </servlet>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>/webkit/register.jsp</welcome-file>
+        <welcome-file>/webkit/Access.register.jsp</welcome-file>
         <welcome-file>service.ServletIndex</welcome-file>
     </welcome-file-list>
 </web-app>

@@ -1,12 +1,11 @@
-package service;
+package Access;
+
+import service.QueriesSQL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- * Created by huber on 21.06.2017.
- */
 public class UserList extends ArrayList<User>{
     public UserList() throws SQLException {
         createList();
@@ -15,9 +14,9 @@ public class UserList extends ArrayList<User>{
     private String sql = "SELECT * FROM USERS;";
 
     private void setId(Integer id) {this.id = id;}
-    public Integer getId() {return id;}
+    Integer getId() {return id;}
 
-    public void createList() throws SQLException {
+    void createList() throws SQLException {
         QueriesSQL tableUsers  = new QueriesSQL();
         ResultSet rs = tableUsers.stmt.executeQuery(sql);
         while ( rs.next() ) {
@@ -28,7 +27,6 @@ public class UserList extends ArrayList<User>{
             String  data        = rs.getString("date");
 
             User user           = new User(name,password,email);
-            user.setId(getId());
             add(user);
         }
         tableUsers.stmt.close();

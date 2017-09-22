@@ -19,7 +19,7 @@
     <div class="row text-center">
         <div class="col-lg-2"></div>
         <div class="col-lg-8 table-bordered form-wrapper">
-            <form class="form-inline" action="/service" method="post">
+            <form class="form-inline" action="/logon" method="post">
                 <div class="form-group row">
                     <label  class="col-sm-4" for="name">Login</label>
                     <input  class="col-sm-8 form-control mb-2 mr-sm-2 mb-sm-0" type="text" name="name" id="name">
@@ -42,7 +42,7 @@
         </div>
         <div class="col-lg-2"></div>
     </div>
-</body>
+</div></body>
 <!-- Bootstrap JavaScript -->
 <script src="<%request.getContextPath();%>/webkit/js/bootstrap.min.js"></script>
 <!-- Main JavaScript -->

@@ -39,7 +39,8 @@
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Home</a></li>
+                    <li class="active"><a href="/service">Home</a></li>
+                    <li class="active"><a href="/logout"> Logout</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -51,9 +52,10 @@
         <div class="row default-color1">
             <div class="col-md-4"></div>
             <div class="col-md-4">
-                <H1 class="headers-region">Welcome <span id="username"><c:out value="${requestScope.userName}" ></c:out></span></H1>
-                <H2 class="headers-region">Your email:  <span id="useremail"><c:out value="${requestScope.userEmail}" ></c:out></span></H2>
-                <H2 class="headers-region">Your email:  <span id="items"><c:out value="${requestScope.items}" ></c:out></span></H2>
+                <H4 class="headers-region">Welcome <span id="username"><c:out value="${requestScope.userName}" ></c:out></span></H4>
+                <H4 class="headers-region">Your email:  <span id="useremail"><c:out value="${requestScope.userEmail}" ></c:out></span></H4>
+                <H5 class="headers-region">Base row:  <span id="items"><c:out value="${requestScope.Items}" ></c:out></span></H5>
+                <H5 class="headers-region">This session:  <span id="sesion"><c:out value="${requestScope.session}" ></c:out></span></H5>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -64,7 +66,7 @@
                 <div class="col-md-4"><h4>English</h4></div>
                 <div class="col-md-4"><h4>Results</h4></div>
             </div>
-            <c:forEach items="${requestScope.wordList}" var="words" varStatus="loop" end="${requestScope.wordList.getId()}">
+            <c:forEach items="${requestScope.wordList}" var="words" varStatus="loop" begin="0" end="${requestScope.wordList.getId()}">
                 <div class="row learned">
                     <div class="col-md-4 pl_words"><h5><c:out value="${words.getPolish()  }"></c:out></h5></div>
                     <div class="col-md-4 en_words"><h5><c:out value="${words.getEnglish()}"></c:out></h5></div>

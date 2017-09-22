@@ -1,18 +1,15 @@
-package register;
+package Access.register;
 
 import service.QueriesSQL;
-import service.User;
+import Access.User;
 
 import java.sql.SQLException;
 
-/**
- * Created by huber on 26.07.2017.
- */
 public class Register {
     public Register(String name, String password, String email) throws SQLException {
         User usr = new User(name,password,email);
         this.sql = "INSERT INTO USERS (name, password, email) VALUES ('"+usr.getName()+"', '"+usr.getPassword()+"', '"+usr.getEmail()+"');";
-        if(usr.getName() != "" && usr.getPassword() != "" && usr.getEmail() != "") newUser();
+        if(! usr.getName() .equals("") && ! usr.getPassword() .equals("") && ! usr.getEmail() .equals("")) newUser();
     }
     private String sql;
     private void newUser() throws SQLException {
