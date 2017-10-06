@@ -1,4 +1,4 @@
-package Access;
+package access;
 
 public class User {
     public User(String name,String password,String email) {

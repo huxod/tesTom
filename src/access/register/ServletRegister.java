@@ -1,6 +1,6 @@
-package Access.register;
+package access.register;
 
-import Access.Logon;
+import access.Logon;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

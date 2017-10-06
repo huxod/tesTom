@@ -1,7 +1,8 @@
 package learning;
 
-import Access.User;
-import Access.UserList;
+import access.User;
+import access.UserList;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,17 +24,18 @@ public class ServletAddWords extends HttpServlet {
         String pltxt = request.getParameter("textpl");
         String entxt = request.getParameter("texten");
         Boolean results = Boolean.valueOf(request.getParameter("result"));
-        String usremail = null;
+        String usremail = (String) request.getSession().getAttribute("EmailUser");
+
         for (User object:users){
             if(object.getName().equals(usrname)){
                 usremail = object.getEmail();
-                System.out.println(object.getEmail());
             }
         }
         System.out.println("name "+usrname+" pl : "+pltxt+" en : "+entxt+" email : "+usremail+" results : "+results);
         if(! usrname.equals("") && ! pltxt.equals("") && ! entxt.equals("") && ! usremail.equals("")) try {
             AtomicReference<AddWords> addWords = new AtomicReference<>(new AddWords(usremail, pltxt, entxt, results));
             wordList.createWLemail(usremail);
+            request.getSession().setAttribute("count_row",wordList.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }

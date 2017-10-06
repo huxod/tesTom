@@ -1,7 +1,9 @@
 package learning;
 
 import service.QueriesSQL;
+import service.ServletIndex;
 
+import java.awt.*;
 import java.sql.SQLException;
 
 /**
@@ -12,6 +14,7 @@ public class AddWords {
         Words words = new Words(email,polish,english,check);
         this.sql = "INSERT INTO WORDS (useremail, polish, english, chc) VALUES ('"+words.getEmail()+"', '"+words.getPolish()+"', '"+words.getEnglish()+"', '"+words.getCheck()+"');";
         addNewWords();
+
     }
     String sql;
     public void addNewWords()throws SQLException{

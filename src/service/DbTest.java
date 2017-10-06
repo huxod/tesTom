@@ -17,9 +17,10 @@ import java.util.regex.Pattern;
 public class DbTest {
     public static void main(String args[])throws SQLException{
         WordList wordList = new WordList();
-        wordList.createWLemail("adek@gg.pl");
+        wordList.createWLemail("piotr@g.pl");
         for(Words word: wordList ){
             System.out.println("Polish : "+word.getPolish()+" Email "+word.getEmail()+" id: "+wordList.getId());
         }
+        System.out.println("END");
     }
 }

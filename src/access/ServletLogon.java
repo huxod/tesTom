@@ -1,4 +1,4 @@
-package Access;
+package access;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,7 +43,8 @@ public class ServletLogon extends HttpServlet {
                 e.printStackTrace();
             }
             session.setAttribute("EmailUser",currentUserEmail);
-            session.setAttribute("NameUser",currentUser     );
+            session.setAttribute("NameUser",currentUser      );
+            session.setAttribute("count_row",0);
             doGet(request,response);
             out.close();
         }else {

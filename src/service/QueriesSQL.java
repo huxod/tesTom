@@ -7,7 +7,7 @@ public class QueriesSQL {
     public QueriesSQL()throws SQLException{
         this.stmt = this.connect.getConnection().createStatement();
     }
-    private DbConnect connect = new DbConnect("postgres","postgres","odwaga@81");
+    private DbConnect connect = new DbConnect("postgres","postgres","password");
     public Statement stmt = null;
 
     public void queries(String sql) throws SQLException{

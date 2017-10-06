@@ -1,7 +1,7 @@
-package Access.register;
+package access.register;
 
 import service.QueriesSQL;
-import Access.User;
+import access.User;
 
 import java.sql.SQLException;
 

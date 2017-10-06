@@ -12,7 +12,13 @@ import java.util.ArrayList;
 public class WordList extends ArrayList<Words> {
     public WordList(){}
     private Integer id;
+    private Integer items                = 0;
     public String sql = "SELECT * FROM WORDS";
+
+    public void setItems(Integer items) {this.items = items;}
+    public Integer getItems(){
+        return  items;
+    }
 
     private void setId(Integer id) {this.id = id;}
     public Integer getId() {return id;}

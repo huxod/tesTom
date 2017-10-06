@@ -25,11 +25,11 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>register.ServletRegister</servlet-name>
-        <servlet-class>Access.register.ServletRegister</servlet-class>
+        <servlet-class>access.register.ServletRegister</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>Access.ServletLogon</servlet-name>
-        <servlet-class>Access.ServletLogon</servlet-class>
+        <servlet-class>access.ServletLogon</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>service.ServletIndex</servlet-name>
@@ -41,11 +41,11 @@
     </servlet>
     <servlet>
         <servlet-name>Access.ServletLogout</servlet-name>
-        <servlet-class>Access.ServletLogout</servlet-class>
+        <servlet-class>access.ServletLogout</servlet-class>
     </servlet>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>/webkit/Access.register.jsp</welcome-file>
+        <welcome-file>/webkit/access.register.jsp</welcome-file>
         <welcome-file>service.ServletIndex</welcome-file>
     </welcome-file-list>
 </web-app>

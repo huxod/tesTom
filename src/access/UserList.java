@@ -1,4 +1,4 @@
-package Access;
+package access;
 
 import service.QueriesSQL;
 

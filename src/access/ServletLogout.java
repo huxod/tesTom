@@ -1,4 +1,4 @@
-package Access;
+package access;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

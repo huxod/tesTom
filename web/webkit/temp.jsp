@@ -54,7 +54,7 @@
             <div class="col-md-4">
                 <H4 class="headers-region">Welcome <span id="username"><c:out value="${requestScope.userName}" ></c:out></span></H4>
                 <H4 class="headers-region">Your email:  <span id="useremail"><c:out value="${requestScope.userEmail}" ></c:out></span></H4>
-                <H5 class="headers-region">Base row:  <span id="items"><c:out value="${requestScope.Items}" ></c:out></span></H5>
+                <H5 class="headers-region">Base row:  <span id="items2"><c:out value="${requestScope.wordList.getId()}" ></c:out></span></H5>
                 <H5 class="headers-region">This session:  <span id="sesion"><c:out value="${requestScope.session}" ></c:out></span></H5>
             </div>
             <div class="col-md-4"></div>
@@ -66,7 +66,7 @@
                 <div class="col-md-4"><h4>English</h4></div>
                 <div class="col-md-4"><h4>Results</h4></div>
             </div>
-            <c:forEach items="${requestScope.wordList}" var="words" varStatus="loop" begin="0" end="${requestScope.wordList.getId()}">
+            <c:forEach items="${requestScope.wordList}" var="words" varStatus="last" >
                 <div class="row learned">
                     <div class="col-md-4 pl_words"><h5><c:out value="${words.getPolish()  }"></c:out></h5></div>
                     <div class="col-md-4 en_words"><h5><c:out value="${words.getEnglish()}"></c:out></h5></div>

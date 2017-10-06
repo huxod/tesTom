@@ -380,9 +380,11 @@ var button_request = document.getElementById('chc');
 
 var name_user = document.getElementById("username").innerHTML;
 button_request.onclick =function () {
-    var resbool = results.innerHTML,
+    var itm = document.getElementById("items2")
+        resbool = results.innerHTML,
         text_en = inputs.value,
-        text_pl = input.value;
+        text_pl = input.value,
+        itm_int     = itm.innerHTML;
     console.log("name "+name_user+" pl : "+text_pl+" en : "+text_en+" results : "+resbool);
     var xmlhttp = new XMLHttpRequest();
 
@@ -396,8 +398,7 @@ button_request.onclick =function () {
 
     xmlhttp.open("POST", 'http://localhost:8080/addwords', true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
-    xmlhttp.send("textpl="+ text_pl +"&texten=" + text_en +"&nameusr="+ name_user
-    + "&result="+ resbool);
+    xmlhttp.send("textpl="+ text_pl +"&texten=" + text_en +"&nameusr="+ name_user + "&result="+ resbool);
 };
 
 //*************************************************************//

@@ -1,4 +1,4 @@
-package Access;
+package access;
 
 import java.sql.SQLException;
 
